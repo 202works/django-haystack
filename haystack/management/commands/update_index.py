@@ -46,7 +46,7 @@ def update_worker(args):
                     del connections.thread_local.connections[alias]
                 else:
                     delattr(connections.thread_local.connections, alias)
-            except KeyError:
+            except (KeyError, AttributeError):
                 pass
 
     # Request that the connection clear out any transient sessions, file handles, etc.
